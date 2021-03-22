@@ -1,10 +1,17 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import NavBar from './component/NavBar';
 import Product from './component/Product';
 import ProductData from './component/ProductData';
 
 function App() {
-  const products = ProductData.map(prod => <Product key={prod.id} prodImage={prod.image} title={prod.title} prodPrice={prod.price}/>);
+  const [shoppingCart, setShoppingCart] = useState([]);
+ 
+  function addItem(product) {
+//    setShoppingCart(shoppingCart.push(product));
+    console.log('an item was added');
+  }
+
+  const products = ProductData.map(prod => <Product key={prod.id} prodImage={prod.image} title={prod.title} prodPrice={prod.price} prodFunc={addItem}/>);
 
   return (
     <div>

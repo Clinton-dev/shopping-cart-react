@@ -26,7 +26,7 @@ function Product(props) {
           <h5 className="card-title">{props.title}</h5>
           <p className="card-text">KES {amount}</p>
           <div className="d-flex">
-            <a href="#" className="btn btn-primary" >Add to cart</a>
+            <button href="#" className="btn btn-primary btn-sm" onClick={props.prodFunc}>Add to cart</button>
               &nbsp; &nbsp; &nbsp;
             <section>
             <p><button className="btn btn-light" onClick={removeQuantity}>-</button> {quantity} <button className="btn btn-light" onClick={addQuantity}>+</button></p>
