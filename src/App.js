@@ -1,28 +1,21 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import NavBar from './component/NavBar';
-import Product from './component/Product';
-import ProductData from './component/ProductData';
+import Product from "./component/ProductWrapper";
+import Cart from "./component/Cart";
+import Home from "./component/Home";
 
 function App() {
-  const [shoppingCart, setShoppingCart] = useState([]);
- 
-  function addItem(product) {
-//    setShoppingCart(shoppingCart.push(product));
-    console.log('an item was added');
-  }
-
-  const products = ProductData.map(prod => <Product key={prod.id} prodImage={prod.image} title={prod.title} prodPrice={prod.price} prodFunc={addItem}/>);
-
   return (
-    <div>
+    <BrowserRouter>
       <NavBar />
       <br />
-      <div className="container">
-        <div className="row row-cols-1 row-cols-md-4 g-4">
-          { products }
-        </div>
-      </div>
-    </div>
+      <Switch>
+        <Route path="/home" component={Home} />
+        <Route exact path="/store" component={Product} />
+        <Route exact Path="/shopping-cart" component={Cart} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
