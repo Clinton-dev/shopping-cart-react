@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import NavBar from './component/NavBar';
 import Product from "./component/ProductWrapper";
 import Cart from "./component/Cart";
 import Home from "./component/Home";
+import "./App.css";
 
 function App() {
+  const [numOfItems, setNumOfItem] = useState(0);
+
+  // write a function to get number of items in cart
+
   return (
     <BrowserRouter>
-      <NavBar />
+      <NavBar items={numOfItems}/>
       <br />
       <Switch>
         <Route path="/home" component={Home} />
