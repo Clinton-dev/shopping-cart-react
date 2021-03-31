@@ -2,13 +2,16 @@ import React,{useState} from 'react';
 import ProductData from './ProductData';
 import Product from './Product';
 
-function ProductWrapper() {
+function ProductWrapper(props) {
   const [shoppingCart, setShoppingCart] = useState([]);
 
   function addItem(product) {
-    setShoppingCart(shoppingCart.push(product));
-    console.log(shoppingCart);
+    let currShoppingCart = shoppingCart;
+    currShoppingCart.push(product);
+    setShoppingCart(currShoppingCart);
+    props.itemFunc(shoppingCart);
   }
+
   
   const products = ProductData.map(prod => <Product key={prod.id} prodImage={prod.image} title={prod.title} prodPrice={prod.price} prodFunc={addItem} />);
 

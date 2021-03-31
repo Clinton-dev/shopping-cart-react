@@ -10,15 +10,22 @@ function App() {
   const [numOfItems, setNumOfItem] = useState(0);
 
   // write a function to get number of items in cart
+  function getItems(itemsAry) {
+      setNumOfItem(itemsAry.length);
+  }
 
   return (
     <BrowserRouter>
       <NavBar items={numOfItems}/>
       <br />
       <Switch>
+        <Route exact path="/store">
+          <Product itemFunc={getItems}/>
+        </Route> 
         <Route path="/home" component={Home} />
-        <Route exact path="/store" component={Product} />
-        <Route exact Path="/shopping-cart" component={Cart} />
+        <Route exact Path="/shopping-cart">
+           <Cart />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

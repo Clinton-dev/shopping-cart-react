@@ -1,6 +1,7 @@
 import React from 'react';
 
-function Cart(){
+function Cart(props){
+  // console.table(props.itemsCart);
   return(
     <div>
       shopping cart coming soon ......
